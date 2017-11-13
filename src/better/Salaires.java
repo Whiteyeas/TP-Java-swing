@@ -2,9 +2,13 @@ package better;
 
 import better.domain.*;
 import better.service.Personnel;
+import better.affichage.*;
 
 public class Salaires {
     public static void main(String[] args) {
+
+        Vue vue = new Vue();
+        vue.affichageMenu();
 
         Personnel p = new Personnel();
 
