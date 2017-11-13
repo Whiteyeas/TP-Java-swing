@@ -29,4 +29,14 @@ public class Personnel {
         }
         return total / employees.size();
     }
+
+    public Object[][] tableauSalaires (){   // compilation des employes sous forme de tableau à dimensions
+         Object[][] tableau =new Object[100][100];
+         int pos = 0;
+        for (Employee employee: employees) {
+            tableau[pos][0] = employee.getName();
+            tableau[pos++][1] = employee.calculerSalaire();
+        }
+        return tableau;
+    }
 }

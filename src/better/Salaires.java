@@ -7,9 +7,6 @@ import better.affichage.*;
 public class Salaires {
     public static void main(String[] args) {
 
-        Vue vue = new Vue();
-        vue.affichageMenu();
-
         Personnel p = new Personnel();
 
         p.ajouterEmploye(new Vendeur("Pierre", "Business", 45, "1995", 30000));
@@ -24,5 +21,8 @@ public class Salaires {
                 "Le salaire moyen dans l'entreprise est de %.2f francs.",
                 p.salaireMoyen()
         ));
+
+        Vue vue = new Vue(p);
+        vue.run();
     }
 }

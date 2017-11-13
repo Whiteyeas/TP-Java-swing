@@ -1,27 +1,23 @@
 package better.affichage;
 
-import javafx.application.Application;
-
+import better.service.Personnel;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
 import java.awt.*;
-import java.util.Vector;
-
-import static javax.swing.SwingConstants.SOUTH;
-import static javax.swing.SwingUtilities.invokeLater;
 
 public class Vue {
+    // les differents containers
     private JFrame frame = new JFrame("Gestion");
     private JPanel panelMenu = new JPanel();
     private JPanel panelAjout = new JPanel();
     private JPanel panelAffichage = new JPanel();
-    public void affichageMenu() {
+    Personnel p;
+
+    public void run() { // affichage du menu
         init();
         frame.setContentPane(panelMenu);
         frame.setVisible(true);
     }
-    private void init(){
+    private void init(){    // paramètre des différents panels et leurs composants
         //frame
         frame.setTitle("Gestion d'employes");
         frame.setSize(720, 500);
@@ -45,7 +41,7 @@ public class Vue {
 
         // Panel d'affichage des employes
         panelAffichage.setLayout(new BorderLayout());
-        JLabel titre = new JLabel("Tout les employes");
+        JLabel titre = new JLabel("Tout les employes                                                                                          salaire moyen :    " + p.salaireMoyen());
         JButton buttonRetour = new JButton("Retour au menu");
         buttonRetour.addActionListener(actionEvent -> retourMenu());
         panelAffichage.add(titre, BorderLayout.NORTH);
@@ -119,22 +115,23 @@ public class Vue {
         frame.repaint();
     }
 
-    private void vueAfficher(){
+    private void vueAfficher(){     // affichage de la vue des employes
         panelMenu.setVisible(false);
         panelAffichage.setVisible(true);
-        JTable table = new JTable(new Object[][]{
-                {"a", "b"},
-                {"c","d"}
-        }, new String[]{"gauche","droite"});
+        JTable table = new JTable(p.tableauSalaires(), new String[]{"Employe","salaire"});  // recuperation des employes sous forme de tableau
         panelAffichage.add(new JScrollPane(table), BorderLayout.CENTER);
         frame.setContentPane(panelAffichage);
         frame.repaint();
     }
 
-    private void vueAjout(){
+    private void vueAjout(){        // affichage de la vue de l'ajout de nouvel employe
         panelMenu.setVisible(false);
         panelAjout.setVisible(true);
         frame.setContentPane(panelAjout);
         frame.repaint();
+    }
+
+    public Vue(Personnel p){
+        this.p = p;
     }
 }
