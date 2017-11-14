@@ -8,18 +8,15 @@ public class Application {
     // les differents containers
     private JFrame frame = new JFrame("Gestion");
     private JPanel panelMenu;
-    private JPanel panelAjout;
-    private JPanel panelAffichage;
     private Personnel p;
-    private String[] attribut = new String[6];
 
 
-    public void run() { // affichage du menu
+    public void run() { // lancement de la vue et affichage du menu
         init();
         frame.setContentPane(panelMenu);
         frame.setVisible(true);
     }
-    private void init(){    // paramètre des différents panels et leurs composants
+    private void init(){    // paramètre de le frame
         //frame
         frame.setTitle("Gestion d'employes");
         frame.setSize(720, 500);

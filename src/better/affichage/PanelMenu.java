@@ -12,13 +12,13 @@ public class PanelMenu extends JPanel {
     JPanel panelAjout;
     private Personnel p;
 
-    private void init (){
+    private void init (){   // parametre du panel
         JButton buttonAjoutEmpl = new JButton("Ajouter un Employe");
         JButton buttonAfficher = new JButton("Afficher");
-        buttonAfficher.addActionListener(actionEvent -> vueAfficher());
+        buttonAfficher.addActionListener(actionEvent -> vueAfficher());     //liaison d'une fonction a l'evenement click sur le bouton
         buttonAjoutEmpl.addActionListener(actionEvent -> vueAjout());
         this.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c = new GridBagConstraints();    // parametre pour le positionnement des elements sur la GridBagLayout
         c.gridx = 0;
         c.gridy = 10;
         c.weightx = 50;

@@ -18,18 +18,18 @@ public class PanelAjout extends JPanel{
     private JTextField dateEntreeField = new JTextField(40);
     private JTextField paramField = new JTextField(40);
 
-    private void init (){
+    private void init (){  // parametre du panel
 
-        this.setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());  // parametre pour le positionnement des elements sur la GridBagLayout
         c.weighty = 50;
         addButton();
         addTypefield();
         addLabel();
         addTypeBox();
     }
-    private void addButton (){
+    private void addButton (){  //Ajout des boutons
         JButton buttonRetour2 = new JButton("Retour au menu");
-        buttonRetour2.addActionListener(actionEvent -> retourMenu());
+        buttonRetour2.addActionListener(actionEvent -> retourMenu());   //liaison d'une fonction a l'evenement click sur le bouton
         JButton buttonCreer = new JButton("Creer le nouvel employee");
         buttonCreer.addActionListener(actionEvent -> creerEmpl());
         c.gridx = 2;
@@ -38,28 +38,20 @@ public class PanelAjout extends JPanel{
         c.gridx = 1;
         this.add(buttonRetour2, c);
     }
-    private void addLabel (){
-        JLabel prenomLabel = new JLabel("Prenom");
-        JLabel nomLabel = new JLabel("Nom");
-        JLabel ageLabel = new JLabel("Age");
-        JLabel dateEntreeLabel = new JLabel("Date d'entree");
-        JLabel paramLabel = new JLabel("Paramètre pour salaire");
-        JLabel typeLabel = new JLabel("Type d'employe");
+    private void addLabel (){   //Ajout des labels
+        String listLabel[]={"Prenom", "Nom", "Age", "Date d'entree", "paramètre pour salaire", "Type d'employe"};
+        JLabel toutLabel[] = new JLabel[6];
+        int i = 0;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(prenomLabel, c);
-        c.gridy = 1;
-        this.add(nomLabel, c);
-        c.gridy = 2;
-        this.add(ageLabel, c);
-        c.gridy = 3;
-        this.add(dateEntreeLabel, c);
-        c.gridy = 4;
-        this.add(paramLabel, c);
-        c.gridy = 5;
-        this.add(typeLabel,c);
+        for (String label:listLabel) {
+            toutLabel[i] = new JLabel(listLabel[i]);
+            c.gridy = i;
+            this.add(toutLabel[i], c);
+            i++;
+        }
     }
-    private void addTypefield(){
+    private void addTypefield(){    //Ajout des typefield
         c.gridy = 0;
         c.gridx = 2;
         this.add(prenomField, c);
@@ -73,7 +65,7 @@ public class PanelAjout extends JPanel{
         this.add(paramField, c);
 
     }
-    private void addTypeBox (){
+    private void addTypeBox (){     //Ajout des typebox
         JComboBox<String> typeBox = new JComboBox<>();
         typeBox.addActionListener(actionEvent -> attribut = String.valueOf(typeBox.getSelectedItem()));
         typeBox.addItem("Vendeur");
@@ -86,13 +78,13 @@ public class PanelAjout extends JPanel{
         c.gridx = 2;
         this.add(typeBox,c);
     }
-    private void retourMenu(){
+    private void retourMenu(){      // affichage du panel menu
         this.setVisible(false);
         panelMenu.setVisible(true);
         frame.setContentPane(panelMenu);
         frame.revalidate();
     }
-    public void creerEmpl (){
+    public void creerEmpl (){       // creation du nouvel employe
         try {
             Employee e = (Employee) Class.forName("better.domain."+attribut)
                     .getConstructor(String.class, String.class, int.class, String.class, double.class)

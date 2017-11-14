@@ -10,16 +10,15 @@ public class PanelAffichage extends JPanel{
     private JFrame frame;
     private Personnel p;
 
-    private void init (){
+    private void init (){  // parametre du panel
         this.setLayout(new BorderLayout());
         JLabel titre = new JLabel("Tout les employes                                                                                          salaire moyen :    " + p.salaireMoyen());
         JButton buttonRetour = new JButton("Retour au menu");
-        buttonRetour.addActionListener(actionEvent -> retourMenu());
+        buttonRetour.addActionListener(actionEvent -> retourMenu());    //liaison d'une fonction a l'evenement click sur le bouton
         this.add(titre, BorderLayout.NORTH);
         this.add(buttonRetour, BorderLayout.SOUTH);
     }
-    private void retourMenu(){
-        this.setVisible(false);
+    private void retourMenu(){  // affichage du panel du menu
         this.setVisible(false);
         panelMenu.setVisible(true);
         frame.setContentPane(panelMenu);
