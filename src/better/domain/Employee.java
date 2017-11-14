@@ -16,10 +16,30 @@ public abstract class Employee {
         this.entryYear = entryYear;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getEntryYear() {
+        return entryYear;
+    }
+
     public abstract double calculerSalaire();
     public abstract String getPosition();
 
     public String getName() {
         return String.format(NAME_PATTERN, getPosition(), firstname, lastname);
+    }
+
+    public String getType() {
+        return getPosition();
     }
 }

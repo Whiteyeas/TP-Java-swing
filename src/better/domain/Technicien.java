@@ -2,10 +2,10 @@ package better.domain;
 
 public class Technicien extends Employee {
 
-    private final int units;
+    private final double units;
     private final double UNIT_PRICE = 5;
 
-    public Technicien(String firstname, String lastname, int age, String entryYear, int units) {
+    public Technicien(String firstname, String lastname, int age, String entryYear, double units) {
         super(firstname, lastname, age, entryYear);
         this.units = units;
     }

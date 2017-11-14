@@ -16,13 +16,7 @@ public class Salaires {
         p.ajouterEmploye(new TechnARisque("Jean", "Flippe", 28, "2000", 1000));
         p.ajouterEmploye(new ManutARisque("Al", "Abordage", 30, "2001", 45));
 
-        p.afficherSalaires();
-        System.out.println(String.format(
-                "Le salaire moyen dans l'entreprise est de %.2f francs.",
-                p.salaireMoyen()
-        ));
-
-        Vue vue = new Vue(p);
-        vue.run();
+        Application application = new Application(p);
+        application.run();
     }
 }

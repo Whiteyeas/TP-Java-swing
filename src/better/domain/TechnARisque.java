@@ -2,7 +2,7 @@ package better.domain;
 
 public class TechnARisque extends Technicien implements ARisque {
 
-    public TechnARisque(String firstname, String lastname, int age, String entryYear, int base) {
+    public TechnARisque(String firstname, String lastname, int age, String entryYear, double base) {
         super(firstname, lastname, age, entryYear, base);
     }
 
